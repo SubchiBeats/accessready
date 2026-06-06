@@ -74,6 +74,102 @@ function resultToMarkdown(result: ScanResult): string[] {
   return lines;
 }
 
+const CSV_HEADERS = [
+  "file",
+  "fileType",
+  "ruleId",
+  "title",
+  "severity",
+  "wcag",
+  "section508",
+  "location",
+  "message",
+  "howToFix",
+  "exampleFix",
+  "confidence",
+  "manualReviewNeeded",
+  "status"
+] as const;
+
+export function toCsvReport(report: ProjectReport): string {
+  const rows: string[] = [CSV_HEADERS.join(",")];
+  for (const result of report.results) {
+    for (const finding of sortFindings(result.findings)) {
+      rows.push([
+        result.fileName,
+        result.fileType,
+        finding.ruleId,
+        finding.title,
+        finding.severity,
+        finding.wcag.join("; "),
+        finding.section508.join("; "),
+        finding.location,
+        finding.message,
+        finding.howToFix,
+        finding.exampleFix ?? "",
+        finding.confidence,
+        finding.manualCheck ? "yes" : "no",
+        "Open"
+      ].map(csvCell).join(","));
+    }
+  }
+  return rows.join("\r\n") + "\r\n";
+}
+
+export function toPrComment(report: ProjectReport): string {
+  const t = report.totals;
+  const verdict = t.passedAutomatedChecks
+    ? "✅ **No critical or high-severity issues found.**"
+    : `⚠️ **${t.critical + t.high} critical/high finding(s) need attention.**`;
+  const lines: string[] = [];
+  lines.push(PR_COMMENT_MARKER);
+  lines.push(`## ♿ AccessReady 508 preflight`);
+  lines.push("");
+  lines.push(verdict);
+  lines.push("");
+  lines.push(`| Files | Findings | 🛑 Critical | 🔴 High | 🟠 Medium | 🟡 Low | Manual checks |`);
+  lines.push(`| ---: | ---: | ---: | ---: | ---: | ---: | ---: |`);
+  lines.push(`| ${report.results.length} | ${t.totalFindings} | ${t.critical} | ${t.high} | ${t.medium} | ${t.low} | ${t.manualChecks} |`);
+  lines.push("");
+
+  const topFindings: { file: string; finding: A11yFinding }[] = [];
+  for (const result of report.results) {
+    for (const finding of sortFindings(result.findings)) topFindings.push({ file: result.fileName, finding });
+  }
+  topFindings.sort((a, b) => severityWeight(b.finding.severity) - severityWeight(a.finding.severity));
+
+  if (topFindings.length) {
+    const shown = topFindings.slice(0, 10);
+    lines.push(`<details${t.passedAutomatedChecks ? "" : " open"}><summary><strong>Top ${shown.length} of ${topFindings.length} finding(s)</strong></summary>`);
+    lines.push("");
+    for (const { file, finding } of shown) {
+      lines.push(`- ${severityIcon(finding.severity)} **${finding.title}** — \`${file}\` (${escapeMd(finding.location)})`);
+      lines.push(`  - ${escapeMd(finding.howToFix)}`);
+    }
+    if (topFindings.length > shown.length) {
+      lines.push("");
+      lines.push(`_…and ${topFindings.length - shown.length} more. See the full report artifact._`);
+    }
+    lines.push("");
+    lines.push(`</details>`);
+    lines.push("");
+  }
+
+  lines.push(`> Preflight only — confirm reading order, alt-text quality, captions, and PDF tags by hand before publishing.`);
+  return lines.join("\n");
+}
+
+export const PR_COMMENT_MARKER = "<!-- accessready-report -->";
+
+function csvCell(value: string): string {
+  const text = String(value ?? "");
+  return /[",\r\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+}
+
+function severityWeight(severity: Severity): number {
+  return { critical: 5, high: 4, medium: 3, low: 2, info: 1 }[severity];
+}
+
 export function toTerminalSummary(report: ProjectReport): string {
   const lines: string[] = [];
   lines.push(`AccessReady report for ${report.projectName}`);

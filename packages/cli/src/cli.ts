@@ -7,8 +7,10 @@ import pc from "picocolors";
 import {
   scanProject,
   severityRank,
+  toCsvReport,
   toJsonReport,
   toMarkdownReport,
+  toPrComment,
   toTerminalSummary,
   type FileInput,
   type Severity
@@ -25,7 +27,7 @@ program
   .command("scan")
   .description("Scan files or directories for common accessibility issues")
   .argument("[paths...]", "Files or folders to scan", ["."])
-  .option("-f, --format <format>", "summary, markdown, or json", "summary")
+  .option("-f, --format <format>", "summary, markdown, json, csv, or pr-comment", "summary")
   .option("-o, --out <file>", "Write report to file")
   .option("--project-name <name>", "Project name for the report", "AccessReady Project")
   .option("--fail-on <severity>", "Fail when this severity or higher is found: critical, high, medium, low, info, none", "none")
@@ -67,7 +69,7 @@ program
 program.parseAsync(process.argv);
 
 interface ScanCommandOptions {
-  format: "summary" | "markdown" | "json";
+  format: "summary" | "markdown" | "json" | "csv" | "pr-comment";
   out?: string;
   projectName: string;
   failOn: string;
@@ -77,6 +79,8 @@ interface ScanCommandOptions {
 function renderReport(report: Awaited<ReturnType<typeof scanProject>>, format: string): string {
   if (format === "json") return toJsonReport(report);
   if (format === "markdown") return toMarkdownReport(report);
+  if (format === "csv") return toCsvReport(report);
+  if (format === "pr-comment") return toPrComment(report);
   return toTerminalSummary(report);
 }
 

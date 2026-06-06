@@ -12,7 +12,7 @@ export type {
 } from "./types.js";
 
 export { RULES } from "./rules.js";
-export { toJsonReport, toMarkdownReport, toTerminalSummary } from "./reporters.js";
+export { toJsonReport, toMarkdownReport, toTerminalSummary, toCsvReport, toPrComment, PR_COMMENT_MARKER } from "./reporters.js";
 export { detectFileType, severityRank } from "./utils.js";
 
 import type { A11yFinding, FileInput, ProjectReport, ScanOptions, ScanResult } from "./types.js";

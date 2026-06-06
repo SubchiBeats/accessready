@@ -77,17 +77,17 @@ AccessReady is not just a scanner. Each finding includes:
 
 ## Preview
 
-The browser app turns an upload into a plain-English report with a severity summary and per-file findings:
+The browser app turns an upload into a plain-English report with a severity summary and per-file findings.
 
-![AccessReady report view](docs/banner.svg)
+**Report overview — hero and severity summary:**
 
-Want a live, pixel-accurate screenshot or GIF for yourself? Open **[`docs/preview.html`](docs/preview.html)** in any browser — it renders the exact report UI (real stylesheet, real sample-scan data) with no build step. Or run the real app with `npm run dev` and upload the files in `samples/`.
+![AccessReady report overview showing the upload hero and a severity summary grid](docs/screenshots/report-overview.png)
 
-To capture assets for the README:
+**Per-file findings with plain-English fixes:**
 
-1. Open `docs/preview.html` (double-click it) or run `npm run dev`.
-2. Screenshot the report, or record a short screen GIF of an upload → report flow.
-3. Save it to `docs/screenshots/` and swap it in above.
+![AccessReady per-file findings list with severity tags and suggested fixes](docs/screenshots/report-findings.png)
+
+Want to capture your own assets (or a demo GIF)? Open **[`docs/preview.html`](docs/preview.html)** in any browser — it renders the exact report UI (real stylesheet, real sample-scan data) with no build step — or run the real app with `npm run dev` and upload the files in `samples/`. Save new images to `docs/screenshots/`.
 
 ## Packages
 
@@ -148,6 +148,20 @@ Export Markdown:
 accessready scan ./public --format markdown --out accessready-report.md
 ```
 
+Export a CSV remediation log (one row per finding, with a `status` column for tracking):
+
+```bash
+accessready scan ./public --format csv --out accessready-remediation-log.csv
+```
+
+Generate a pull-request comment summary:
+
+```bash
+accessready scan ./public --format pr-comment --out accessready-comment.md
+```
+
+To post that comment automatically on every PR, copy [`.github/workflows/accessready-pr-comment.yml`](.github/workflows/accessready-pr-comment.yml) into your repo. It keeps a single, self-updating AccessReady comment on each pull request.
+
 Ignore generated/vendor folders:
 
 ```bash
@@ -193,10 +207,10 @@ jobs:
 - [x] Markdown and JSON reports
 - [x] Browser demo
 - [x] GitHub Action workflow template
+- [x] CSV remediation log export
+- [x] Pull request comments
 - [ ] Better color contrast extraction from CSS files
 - [ ] Image/chart alt text drafting workflow with human approval
-- [ ] CSV remediation log export
-- [ ] Pull request comments
 - [ ] Deeper PDF/UA checks through optional external adapters
 - [ ] Google Docs/Drive connector concept
 - [ ] VPAT/ACR evidence packet helper

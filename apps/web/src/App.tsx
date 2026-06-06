@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import {
   scanProject,
+  toCsvReport,
   toJsonReport,
   toMarkdownReport,
   type ProjectReport,
@@ -41,6 +42,7 @@ export function App() {
 
   const markdown = useMemo(() => (report ? toMarkdownReport(report) : ""), [report]);
   const json = useMemo(() => (report ? toJsonReport(report) : ""), [report]);
+  const csv = useMemo(() => (report ? toCsvReport(report) : ""), [report]);
 
   return (
     <main className="shell">
@@ -88,6 +90,7 @@ export function App() {
             <div className="download-row">
               <DownloadButton fileName="accessready-report.md" text={markdown} label="Download Markdown" />
               <DownloadButton fileName="accessready-report.json" text={json} label="Download JSON" />
+              <DownloadButton fileName="accessready-remediation-log.csv" text={csv} label="Download CSV log" />
             </div>
           </div>
 
@@ -141,7 +144,8 @@ export function App() {
 
 function DownloadButton({ fileName, text, label }: { fileName: string; text: string; label: string }) {
   function download() {
-    const blob = new Blob([text], { type: fileName.endsWith(".json") ? "application/json" : "text/markdown" });
+    const mime = fileName.endsWith(".json") ? "application/json" : fileName.endsWith(".csv") ? "text/csv" : "text/markdown";
+    const blob = new Blob([text], { type: mime });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
