@@ -8,6 +8,8 @@
 
 **A Section 508 preflight and remediation assistant for communications teams.**
 
+🔗 **[Try the live demo →](https://subchibeats.github.io/accessready/)** — upload a file in your browser, no install required.
+
 AccessReady scans common content formats before publication, explains issues in plain English, and produces a clean remediation checklist that teams can review, fix, and archive.
 
 > AccessReady is designed to support accessibility QA. It does **not** guarantee legal compliance, replace manual review, or replace expert remediation for complex PDFs, multimedia, or interactive applications.
