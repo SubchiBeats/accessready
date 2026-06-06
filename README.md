@@ -1,5 +1,7 @@
 # AccessReady
 
+![AccessReady — Section 508 / WCAG preflight assistant](docs/banner.svg)
+
 **A Section 508 preflight and remediation assistant for communications teams.**
 
 AccessReady scans common content formats before publication, explains issues in plain English, and produces a clean remediation checklist that teams can review, fix, and archive.
@@ -72,6 +74,20 @@ AccessReady is not just a scanner. Each finding includes:
 - Example fix when helpful
 - Confidence level
 - Whether a human needs to confirm the result
+
+## Preview
+
+The browser app turns an upload into a plain-English report with a severity summary and per-file findings:
+
+![AccessReady report view](docs/banner.svg)
+
+Want a live, pixel-accurate screenshot or GIF for yourself? Open **[`docs/preview.html`](docs/preview.html)** in any browser — it renders the exact report UI (real stylesheet, real sample-scan data) with no build step. Or run the real app with `npm run dev` and upload the files in `samples/`.
+
+To capture assets for the README:
+
+1. Open `docs/preview.html` (double-click it) or run `npm run dev`.
+2. Screenshot the report, or record a short screen GIF of an upload → report flow.
+3. Save it to `docs/screenshots/` and swap it in above.
 
 ## Packages
 

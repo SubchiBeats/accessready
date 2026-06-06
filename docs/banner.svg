@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="bt bd" font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Arial, sans-serif">
+  <title id="bt">AccessReady</title>
+  <desc id="bd">AccessReady report preview: a Section 508 preflight scan of a sample project showing 19 findings across 4 files with a severity summary.</desc>
+  <defs>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#eef5ff"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#f6f8fb"/>
+  <rect x="40" y="36" width="1120" height="558" rx="28" fill="url(#card)" stroke="#dbe5f2"/>
+
+  <!-- brand row -->
+  <g transform="translate(80 78)">
+    <path d="M26 16l18-7 18 7v15c0 14-7.5 24.5-18 32-10.5-7.5-18-18-18-32V16z" fill="#173b73"/>
+    <path d="M36 36l6 6 13-17" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="78" y="30" font-size="30" font-weight="800" fill="#172033">AccessReady</text>
+    <text x="79" y="54" font-size="13.5" font-weight="800" letter-spacing="1.6" fill="#315d9f">SECTION 508 / WCAG PREFLIGHT ASSISTANT</text>
+  </g>
+
+  <!-- headline -->
+  <text x="80" y="208" font-size="50" font-weight="800" letter-spacing="-2" fill="#172033">Catch accessibility issues</text>
+  <text x="80" y="262" font-size="50" font-weight="800" letter-spacing="-2" fill="#172033">before content ships.</text>
+  <text x="80" y="312" font-size="21" font-weight="500" fill="#3a4660">Scan HTML, Markdown, DOCX, PPTX &amp; PDF in one pass — plain-English fixes,</text>
+  <text x="80" y="342" font-size="21" font-weight="500" fill="#3a4660">WCAG / 508 mapping, and an archivable evidence report.</text>
+
+  <!-- summary metric chips (real sample-scan totals) -->
+  <g transform="translate(80 386)" font-weight="800">
+    <!-- chip template: 170 wide, 8px gap -->
+    <g>
+      <rect width="118" height="96" rx="16" fill="#fff" stroke="#dbe5f2"/>
+      <text x="18" y="34" font-size="11.5" letter-spacing="0.6" fill="#52607a">CRITICAL</text>
+      <text x="18" y="76" font-size="34" fill="#172033">0</text>
+    </g>
+    <g transform="translate(128 0)">
+      <rect width="118" height="96" rx="16" fill="#fff" stroke="#dbe5f2"/>
+      <text x="18" y="34" font-size="11.5" letter-spacing="0.6" fill="#52607a">HIGH</text>
+      <text x="18" y="76" font-size="34" fill="#b3261e">4</text>
+    </g>
+    <g transform="translate(256 0)">
+      <rect width="118" height="96" rx="16" fill="#fff" stroke="#dbe5f2"/>
+      <text x="18" y="34" font-size="11.5" letter-spacing="0.6" fill="#52607a">MEDIUM</text>
+      <text x="18" y="76" font-size="34" fill="#9a6400">10</text>
+    </g>
+    <g transform="translate(384 0)">
+      <rect width="118" height="96" rx="16" fill="#fff" stroke="#dbe5f2"/>
+      <text x="18" y="34" font-size="11.5" letter-spacing="0.6" fill="#52607a">LOW</text>
+      <text x="18" y="76" font-size="34" fill="#173b73">5</text>
+    </g>
+    <g transform="translate(512 0)">
+      <rect width="118" height="96" rx="16" fill="#fff" stroke="#dbe5f2"/>
+      <text x="18" y="34" font-size="11.5" letter-spacing="0.6" fill="#52607a">INFO</text>
+      <text x="18" y="76" font-size="34" fill="#172033">0</text>
+    </g>
+    <g transform="translate(640 0)">
+      <rect width="118" height="96" rx="16" fill="#172033"/>
+      <text x="18" y="34" font-size="11.5" letter-spacing="0.6" fill="#9fb4d8">MANUAL</text>
+      <text x="18" y="76" font-size="34" fill="#fff">10</text>
+    </g>
+  </g>
+
+  <!-- command + delivery tags -->
+  <g transform="translate(80 512)">
+    <rect width="430" height="44" rx="12" fill="#0f1830"/>
+    <text x="18" y="29" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#dbe5f2"><tspan fill="#6f86b8">$</tspan> accessready scan ./content <tspan fill="#7fd6a0">--fail-on high</tspan></text>
+    <g font-size="13" font-weight="800" fill="#173b73">
+      <rect x="450" y="6" width="74" height="32" rx="16" fill="#e8f2ff"/><text x="465" y="27">CLI</text>
+      <rect x="532" y="6" width="120" height="32" rx="16" fill="#e8f2ff"/><text x="547" y="27">Browser app</text>
+      <rect x="660" y="6" width="160" height="32" rx="16" fill="#e8f2ff"/><text x="675" y="27">GitHub Action</text>
+    </g>
+  </g>
+
+  <!-- right-side "needs review" result card accent -->
+  <g transform="translate(905 96)">
+    <rect width="215" height="270" rx="20" fill="#fff" stroke="#dbe5f2"/>
+    <text x="20" y="40" font-size="15" font-weight="800" fill="#172033">inaccessible-</text>
+    <text x="20" y="60" font-size="15" font-weight="800" fill="#172033">sample.html</text>
+    <rect x="20" y="76" width="118" height="26" rx="13" fill="#fff3dc"/>
+    <text x="33" y="94" font-size="12" font-weight="900" fill="#6d4300">NEEDS REVIEW</text>
+
+    <g transform="translate(20 124)">
+      <rect width="58" height="22" rx="11" fill="#ffe2e2"/><text x="11" y="16" font-size="10.5" font-weight="900" fill="#7a1010">HIGH</text>
+      <text x="68" y="16" font-size="12.5" font-weight="700" fill="#172033">Button has no</text>
+      <text x="68" y="32" font-size="12.5" font-weight="700" fill="#172033">accessible name</text>
+    </g>
+    <g transform="translate(20 178)">
+      <rect width="58" height="22" rx="11" fill="#ffe2e2"/><text x="11" y="16" font-size="10.5" font-weight="900" fill="#7a1010">HIGH</text>
+      <text x="68" y="16" font-size="12.5" font-weight="700" fill="#172033">Form control</text>
+      <text x="68" y="32" font-size="12.5" font-weight="700" fill="#172033">missing a label</text>
+    </g>
+    <g transform="translate(20 232)">
+      <rect width="74" height="22" rx="11" fill="#fff3dc"/><text x="11" y="16" font-size="10.5" font-weight="900" fill="#6d4300">MEDIUM</text>
+      <text x="20" y="34" font-size="12.5" font-weight="700" fill="#315d9f">+ heading levels skip</text>
+    </g>
+  </g>
+</svg>
