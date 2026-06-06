@@ -1,0 +1,23 @@
+{
+  "name": "@accessready/cli",
+  "version": "0.1.0",
+  "description": "Command-line interface for AccessReady.",
+  "type": "module",
+  "bin": {
+    "accessready": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@accessready/core": "0.1.0",
+    "commander": "^12.1.0",
+    "fast-glob": "^3.3.2",
+    "picocolors": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "typescript": "^5.5.4"
+  }
+}

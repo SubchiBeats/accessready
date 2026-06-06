@@ -1,0 +1,33 @@
+{
+  "name": "accessready",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A Section 508 preflight and remediation assistant for communications teams.",
+  "license": "MIT",
+  "type": "module",
+  "workspaces": [
+    "apps/web",
+    "packages/core",
+    "packages/cli"
+  ],
+  "scripts": {
+    "build": "npm run build -w @accessready/core && npm run build -w @accessready/cli && npm run build -w @accessready/web",
+    "dev": "npm run dev -w @accessready/web",
+    "accessready": "node packages/cli/dist/cli.js",
+    "scan:samples": "npm run accessready -- scan samples --format markdown --out samples/generated-accessready-report.md",
+    "typecheck": "npm run typecheck -w @accessready/core && npm run typecheck -w @accessready/cli && npm run typecheck -w @accessready/web",
+    "clean": "rm -rf packages/*/dist apps/web/dist"
+  },
+  "keywords": [
+    "section-508",
+    "accessibility",
+    "wcag",
+    "a11y",
+    "pdf-accessibility",
+    "communications",
+    "remediation"
+  ],
+  "engines": {
+    "node": ">=20"
+  }
+}

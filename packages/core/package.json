@@ -1,0 +1,18 @@
+{
+  "name": "@accessready/core",
+  "version": "0.1.0",
+  "description": "Shared scanner engine for AccessReady.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "jszip": "^3.10.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}

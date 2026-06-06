@@ -1,0 +1,31 @@
+name: "AccessReady 508 Preflight"
+description: "Scan HTML, Markdown, Office files, and PDFs for common Section 508/WCAG accessibility issues."
+author: "AccessReady contributors"
+inputs:
+  paths:
+    description: "Space-separated paths to scan."
+    required: false
+    default: "./public ./docs"
+  format:
+    description: "Report format: summary, markdown, or json."
+    required: false
+    default: "markdown"
+  out:
+    description: "Output report file path."
+    required: false
+    default: "accessready-report.md"
+  fail-on:
+    description: "Fail when this severity or higher is found: critical, high, medium, low, none."
+    required: false
+    default: "high"
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: |
+        npm ci
+        npm run build
+        npm run accessready -- scan ${{ inputs.paths }} --format ${{ inputs.format }} --out ${{ inputs.out }} --fail-on ${{ inputs.fail-on }}
+branding:
+  icon: "check-circle"
+  color: "blue"

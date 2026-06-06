@@ -1,0 +1,283 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f6f8fb;
+  color: #172033;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.shell {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 48px 0;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.5fr 0.8fr;
+  gap: 28px;
+  align-items: center;
+  background: linear-gradient(135deg, #ffffff, #eef5ff);
+  border: 1px solid #dbe5f2;
+  border-radius: 28px;
+  padding: 40px;
+  box-shadow: 0 22px 60px rgba(23, 32, 51, 0.08);
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #315d9f;
+}
+
+h1, h2, h3 {
+  margin-top: 0;
+  line-height: 1.05;
+}
+
+h1 {
+  max-width: 760px;
+  font-size: clamp(2.6rem, 7vw, 5.8rem);
+  letter-spacing: -0.07em;
+  margin-bottom: 18px;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  letter-spacing: -0.05em;
+}
+
+.hero-copy {
+  max-width: 700px;
+  color: #3a4660;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.cta-row, .download-row, .report-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.upload-card, .button {
+  border: 0;
+  border-radius: 999px;
+  background: #173b73;
+  color: #fff;
+  padding: 14px 20px;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+}
+
+.upload-card input {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.upload-card:focus-within, .button:focus-visible, .secondary-link:focus-visible {
+  outline: 4px solid #ffbf47;
+  outline-offset: 4px;
+}
+
+.secondary-link {
+  color: #173b73;
+  font-weight: 800;
+}
+
+.hero-panel {
+  background: #172033;
+  color: #fff;
+  border-radius: 22px;
+  padding: 28px;
+}
+
+.hero-panel strong {
+  display: block;
+  font-size: 1.4rem;
+  margin-bottom: 14px;
+}
+
+.hero-panel li {
+  margin-bottom: 10px;
+}
+
+.status, .error {
+  margin: 22px 0 0;
+  padding: 14px 18px;
+  border-radius: 14px;
+  font-weight: 700;
+}
+
+.status {
+  background: #e8f2ff;
+}
+
+.error {
+  background: #ffe8e8;
+  color: #7a1010;
+}
+
+.report {
+  margin-top: 36px;
+}
+
+.report-header {
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.metric {
+  background: #fff;
+  border: 1px solid #dbe5f2;
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.metric span {
+  color: #52607a;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.metric strong {
+  display: block;
+  font-size: 2rem;
+}
+
+.results-list {
+  display: grid;
+  gap: 16px;
+}
+
+.result-card {
+  background: #fff;
+  border: 1px solid #dbe5f2;
+  border-radius: 22px;
+  padding: 22px;
+}
+
+.result-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 18px;
+}
+
+.result-title-row h3 {
+  overflow-wrap: anywhere;
+}
+
+.badge {
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  padding: 8px 12px;
+  white-space: nowrap;
+}
+
+.pass {
+  background: #e7f7ed;
+  color: #174f2a;
+}
+
+.needs-review {
+  background: #fff3dc;
+  color: #6d4300;
+}
+
+.muted {
+  color: #5f6c83;
+}
+
+.findings {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+  display: grid;
+  gap: 12px;
+}
+
+.findings li {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 14px;
+  border-top: 1px solid #e7edf5;
+  padding-top: 14px;
+}
+
+.severity {
+  align-self: start;
+  border-radius: 999px;
+  text-align: center;
+  padding: 6px 8px;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.severity.critical, .severity.high {
+  background: #ffe2e2;
+  color: #7a1010;
+}
+
+.severity.medium {
+  background: #fff3dc;
+  color: #6d4300;
+}
+
+.severity.low, .severity.info {
+  background: #e8f2ff;
+  color: #173b73;
+}
+
+.fix {
+  color: #315d9f;
+  font-weight: 700;
+}
+
+@media (max-width: 780px) {
+  .shell {
+    width: min(100% - 20px, 1120px);
+    padding: 20px 0;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 24px;
+    border-radius: 22px;
+  }
+
+  .summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .findings li {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="240" viewBox="0 0 960 240" role="img" aria-labelledby="title desc">
+  <title id="title">AccessReady logo</title>
+  <desc id="desc">A shield with a check mark beside the word AccessReady.</desc>
+  <rect width="960" height="240" rx="36" fill="#f6f8fb"/>
+  <path d="M92 55l58-22 58 22v48c0 45-24 79-58 104-34-25-58-59-58-104V55z" fill="#173b73"/>
+  <path d="M124 119l20 20 43-55" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="250" y="135" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="800" fill="#172033">AccessReady</text>
+  <text x="254" y="174" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#315d9f">508 preflight for communications teams</text>
+</svg>

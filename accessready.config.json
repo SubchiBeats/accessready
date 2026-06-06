@@ -1,0 +1,18 @@
+{
+  "projectName": "AccessReady Demo",
+  "standardProfile": "section-508-wcag-aa-preflight",
+  "scan": {
+    "include": ["**/*.html", "**/*.md", "**/*.docx", "**/*.pptx", "**/*.pdf"],
+    "ignore": ["**/node_modules/**", "**/dist/**", "**/.git/**"]
+  },
+  "report": {
+    "includeManualChecks": true,
+    "includeFixGuidance": true,
+    "defaultFormat": "markdown"
+  },
+  "policy": {
+    "failOn": "high",
+    "allowWarnings": true,
+    "requireHumanApprovalForAltText": true
+  }
+}

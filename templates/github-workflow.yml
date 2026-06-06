@@ -1,0 +1,23 @@
+name: AccessReady 508 Preflight
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  accessready:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run build
+      - run: npm run accessready -- scan ./public ./docs --format markdown --out accessready-report.md --fail-on high
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: accessready-report
+          path: accessready-report.md
