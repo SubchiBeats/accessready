@@ -20,7 +20,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       # Adjust the scan paths to match where your content lives.
-      - run: npm run accessready -- scan samples docs --format pr-comment --out accessready-comment.md
+      - run: npm run accessready -- scan samples --format pr-comment --out accessready-comment.md --ignore "**/generated-*"
       - name: Post or update PR comment
         uses: actions/github-script@v7
         with:
