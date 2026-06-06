@@ -1,19 +1,19 @@
 # AccessReady 508 Preflight Report
 
 **Project:** AccessReady Project
-**Generated:** 2026-06-06T07:13:01.533Z
+**Generated:** 2026-06-06T18:31:17.315Z
 **Profile:** section-508-wcag-aa-preflight
 
 ## Summary
 
 | Total | Critical | High | Medium | Low | Info | Manual checks | Automated pass |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | :---: |
-| 31 | 0 | 5 | 11 | 15 | 0 | 13 | No |
+| 53 | 0 | 6 | 12 | 35 | 0 | 13 | No |
 
 ## samples/generated-accessready-report.md
 
 **Type:** markdown  
-**Scanned:** 2026-06-06T07:13:01.516Z  
+**Scanned:** 2026-06-06T18:31:17.308Z  
 **Automated pass:** No
 
 ### Findings
@@ -22,7 +22,21 @@
 
 - **Rule:** AR-IMG-ALT
 - **Severity:** high
-- **Location:** line 200
+- **Location:** line 33
+- **Message:** Image (chart.png) has empty alt text.
+- **WCAG:** 1.1.1 Non-text Content
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Screen reader users may miss important information if meaningful images do not have text alternatives.
+- **How to fix:** Add concise alt text that communicates the purpose or takeaway of the image. Use empty alt text only when the image is decorative.
+- **Example fix:** `![Bar chart showing applications increased from 2022 to 2024](chart.png)`
+- **Confidence:** high
+- **Snippet:** `![ ](chart.png)`
+
+#### 🔴 Image is missing alternative text
+
+- **Rule:** AR-IMG-ALT
+- **Severity:** high
+- **Location:** line 392
 - **Message:** Image (chart.png) has empty alt text.
 - **WCAG:** 1.1.1 Non-text Content
 - **508 relevance:** E205.4, WCAG 2.0 A/AA
@@ -36,7 +50,21 @@
 
 - **Rule:** AR-LINK-TEXT
 - **Severity:** medium
-- **Location:** line 227
+- **Location:** line 47
+- **Message:** Link text “click here” may not describe the destination or purpose.
+- **WCAG:** 2.4.4 Link Purpose (In Context), 2.4.9 Link Purpose (Link Only)
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Screen reader users often navigate by links. Link text should make sense out of context.
+- **How to fix:** Replace vague wording with the destination or action.
+- **Example fix:** `[Download the accessibility checklist](checklist.pdf)`
+- **Confidence:** high
+- **Snippet:** `[click here](https://example.com/register)`
+
+#### 🟠 Link text is vague or not meaningful out of context
+
+- **Rule:** AR-LINK-TEXT
+- **Severity:** medium
+- **Location:** line 419
 - **Message:** Link text “click here” may not describe the destination or purpose.
 - **WCAG:** 2.4.4 Link Purpose (In Context), 2.4.9 Link Purpose (Link Only)
 - **508 relevance:** E205.4, WCAG 2.0 A/AA
@@ -74,13 +102,13 @@
 - **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
 - **Confidence:** low
 - **Manual review needed:** Yes
-- **Snippet:** `| 19 | 0 | 4 | 10 | 5 | 0 | 10 | No |`
+- **Snippet:** `| 31 | 0 | 5 | 11 | 15 | 0 | 13 | No |`
 
 #### 🟡 Table may not identify header cells
 
 - **Rule:** AR-TABLE-HEADERS
 - **Severity:** low
-- **Location:** line 252
+- **Location:** line 59
 - **Message:** This looks like a table, but the Markdown header separator row was not detected.
 - **WCAG:** 1.3.1 Info and Relationships
 - **508 relevance:** E205.4, WCAG 2.0 A/AA
@@ -95,67 +123,7 @@
 
 - **Rule:** AR-TABLE-HEADERS
 - **Severity:** low
-- **Location:** line 255
-- **Message:** This looks like a table, but the Markdown header separator row was not detected.
-- **WCAG:** 1.3.1 Info and Relationships
-- **508 relevance:** E205.4, WCAG 2.0 A/AA
-- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
-- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
-- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
-- **Confidence:** low
-- **Manual review needed:** Yes
-- **Snippet:** `- **Snippet:** \`| Date | Speaker | Topic |\``
-
-#### 🟡 Table may not identify header cells
-
-- **Rule:** AR-TABLE-HEADERS
-- **Severity:** low
-- **Location:** line 267
-- **Message:** This looks like a table, but the Markdown header separator row was not detected.
-- **WCAG:** 1.3.1 Info and Relationships
-- **508 relevance:** E205.4, WCAG 2.0 A/AA
-- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
-- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
-- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
-- **Confidence:** low
-- **Manual review needed:** Yes
-- **Snippet:** `- **Example fix:** \`| Name | Date | Status |\n| --- | --- | --- |\``
-
-#### 🟡 Table may not identify header cells
-
-- **Rule:** AR-TABLE-HEADERS
-- **Severity:** low
-- **Location:** line 270
-- **Message:** This looks like a table, but the Markdown header separator row was not detected.
-- **WCAG:** 1.3.1 Info and Relationships
-- **508 relevance:** E205.4, WCAG 2.0 A/AA
-- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
-- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
-- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
-- **Confidence:** low
-- **Manual review needed:** Yes
-- **Snippet:** `- **Snippet:** \`Jan. 4 | Dr. Lee | Program overview |\``
-
-#### 🟡 Table may not identify header cells
-
-- **Rule:** AR-TABLE-HEADERS
-- **Severity:** low
-- **Location:** line 296
-- **Message:** This looks like a table, but the Markdown header separator row was not detected.
-- **WCAG:** 1.3.1 Info and Relationships
-- **508 relevance:** E205.4, WCAG 2.0 A/AA
-- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
-- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
-- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
-- **Confidence:** low
-- **Manual review needed:** Yes
-- **Snippet:** `- **Example fix:** \`| Name | Date | Status |\n| --- | --- | --- |\``
-
-#### 🟡 Table may not identify header cells
-
-- **Rule:** AR-TABLE-HEADERS
-- **Severity:** low
-- **Location:** line 299
+- **Location:** line 62
 - **Message:** This looks like a table, but the Markdown header separator row was not detected.
 - **WCAG:** 1.3.1 Info and Relationships
 - **508 relevance:** E205.4, WCAG 2.0 A/AA
@@ -170,7 +138,7 @@
 
 - **Rule:** AR-TABLE-HEADERS
 - **Severity:** low
-- **Location:** line 311
+- **Location:** line 74
 - **Message:** This looks like a table, but the Markdown header separator row was not detected.
 - **WCAG:** 1.3.1 Info and Relationships
 - **508 relevance:** E205.4, WCAG 2.0 A/AA
@@ -185,7 +153,367 @@
 
 - **Rule:** AR-TABLE-HEADERS
 - **Severity:** low
-- **Location:** line 314
+- **Location:** line 77
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Snippet:** \`| 19 | 0 | 4 | 10 | 5 | 0 | 10 | No |\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 89
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Example fix:** \`| Name | Date | Status |\n| --- | --- | --- |\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 92
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Snippet:** \`- **Example fix:** \\`| Name | Date | Status |\n| --- | --- | --- |\\`\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 104
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Example fix:** \`| Name | Date | Status |\n| --- | --- | --- |\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 107
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Snippet:** \`- **Snippet:** \\`| Date | Speaker | Topic |\\`\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 119
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Example fix:** \`| Name | Date | Status |\n| --- | --- | --- |\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 122
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Snippet:** \`- **Example fix:** \\`| Name | Date | Status |\n| --- | --- | --- |\\`\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 134
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Example fix:** \`| Name | Date | Status |\n| --- | --- | --- |\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 137
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Snippet:** \`- **Snippet:** \\`Jan. 4 | Dr. Lee | Program overview |\\`\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 149
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Example fix:** \`| Name | Date | Status |\n| --- | --- | --- |\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 152
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Snippet:** \`- **Example fix:** \\`| Name | Date | Status |\n| --- | --- | --- |\\`\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 164
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Example fix:** \`| Name | Date | Status |\n| --- | --- | --- |\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 167
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Snippet:** \`- **Snippet:** \\`| ---: | ---: | ---: | ---: | ---: | ---: | ---: | :---: |\\`\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 179
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Example fix:** \`| Name | Date | Status |\n| --- | --- | --- |\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 182
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Snippet:** \`- **Example fix:** \\`| Name | Date | Status |\n| --- | --- | --- |\\`\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 194
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Example fix:** \`| Name | Date | Status |\n| --- | --- | --- |\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 197
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Snippet:** \`- **Snippet:** \\`| 10 | 0 | 4 | 5 | 1 | 0 | 8 | No |\\`\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 444
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Example fix:** \`| Name | Date | Status |\n| --- | --- | --- |\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 447
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Snippet:** \`| Date | Speaker | Topic |\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 459
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Example fix:** \`| Name | Date | Status |\n| --- | --- | --- |\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 462
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Snippet:** \`Jan. 4 | Dr. Lee | Program overview |\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 488
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Example fix:** \`| Name | Date | Status |\n| --- | --- | --- |\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 491
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Snippet:** \`| ---: | ---: | ---: | ---: | ---: | ---: | ---: | :---: |\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 503
+- **Message:** This looks like a table, but the Markdown header separator row was not detected.
+- **WCAG:** 1.3.1 Info and Relationships
+- **508 relevance:** E205.4, WCAG 2.0 A/AA
+- **Why it matters:** Tables need clear header relationships so assistive technology can communicate row and column meaning.
+- **How to fix:** Use a proper Markdown table header row or convert layout tables into lists.
+- **Example fix:** `| Name | Date | Status |\n| --- | --- | --- |`
+- **Confidence:** low
+- **Manual review needed:** Yes
+- **Snippet:** `- **Example fix:** \`| Name | Date | Status |\n| --- | --- | --- |\``
+
+#### 🟡 Table may not identify header cells
+
+- **Rule:** AR-TABLE-HEADERS
+- **Severity:** low
+- **Location:** line 506
 - **Message:** This looks like a table, but the Markdown header separator row was not detected.
 - **WCAG:** 1.3.1 Info and Relationships
 - **508 relevance:** E205.4, WCAG 2.0 A/AA
@@ -205,7 +533,7 @@
 ## samples/inaccessible-sample.html
 
 **Type:** html  
-**Scanned:** 2026-06-06T07:13:01.526Z  
+**Scanned:** 2026-06-06T18:31:17.315Z  
 **Automated pass:** No
 
 ### Findings
@@ -372,7 +700,7 @@
 ## samples/inaccessible-sample.md
 
 **Type:** markdown  
-**Scanned:** 2026-06-06T07:13:01.533Z  
+**Scanned:** 2026-06-06T18:31:17.315Z  
 **Automated pass:** No
 
 ### Findings
@@ -470,7 +798,7 @@
 ## samples/sample-accessready-report.md
 
 **Type:** markdown  
-**Scanned:** 2026-06-06T07:13:01.533Z  
+**Scanned:** 2026-06-06T18:31:17.315Z  
 **Automated pass:** Yes
 
 ### Findings

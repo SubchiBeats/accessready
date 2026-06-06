@@ -15,6 +15,7 @@
     "dev": "npm run dev -w @accessready/web",
     "accessready": "node packages/cli/dist/cli.js",
     "scan:samples": "npm run accessready -- scan samples --format markdown --out samples/generated-accessready-report.md",
+    "evidence:samples": "npm run accessready -- scan samples --format evidence-pack --out samples/sample-evidence-pack.md --project-name \"NIH-webinar-promo-package\" --ignore \"**/generated-*\"",
     "typecheck": "npm run typecheck -w @accessready/core && npm run typecheck -w @accessready/cli && npm run typecheck -w @accessready/web",
     "test": "npm run build -w @accessready/core && node --test packages/core/test/",
     "clean": "rm -rf packages/*/dist apps/web/dist"

@@ -6,22 +6,28 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-informational.svg)](LICENSE)
 [![Node](https://img.shields.io/badge/node-%E2%89%A520-43853d.svg)](https://nodejs.org)
 
-**A Section 508 preflight and remediation assistant for communications teams.**
+> **Know if your deliverable is AccessReady before you send it.**
+> A Section 508 preflight assistant and **Evidence Pack** generator for communications teams shipping government-facing content.
 
-🔗 **[Try the live demo →](https://subchibeats.github.io/accessready/)** — upload a file in your browser, no install required.
+🔗 **[Try the live demo →](https://subchibeats.github.io/accessready/)** — upload files in your browser, no install required.
 
-AccessReady scans common content formats before publication, explains issues in plain English, and produces a clean remediation checklist that teams can review, fix, and archive.
+AccessReady is a Section 508 preflight assistant for communications deliverables. It helps teams identify common accessibility risks, organize remediation, and export review documentation before publishing or sending content to a government-facing client.
 
-> AccessReady is designed to support accessibility QA. It does **not** guarantee legal compliance, replace manual review, or replace expert remediation for complex PDFs, multimedia, or interactive applications.
+> AccessReady supports accessibility review workflows. It does **not** guarantee legal compliance, and does not replace expert audit, PDF remediation, or VPAT/ACR creation. Pair it with manual review before delivery.
 
-## Why this exists
+## The problem it solves
 
-Most accessibility tools are built for developers or for late-stage PDF remediation. Communications teams often work in Word, PowerPoint, Markdown, HTML snippets, social graphics, newsletters, and exported PDFs. AccessReady focuses on the messy middle of that workflow:
+Communications teams discover 508 issues too late — after the PDF, report, or page is already finalized and approvals are stacking up. Existing tools find issues, but rarely explain fixes in plain English for non-developers, and almost never produce the documentation a client or program officer actually wants: *what was checked, what was fixed, what still needs manual review, and who approved delivery.*
 
-1. Catch common issues before publishing.
-2. Explain what failed in normal language.
-3. Suggest practical fixes.
-4. Generate an evidence report for QA/QC tracking.
+AccessReady focuses on the moment teams actually feel pain: **right before the handoff**.
+
+## Who it's for
+
+- Government contractors submitting deliverables to federal / state / local clients
+- Communications teams creating PDFs, reports, newsletters, webinar pages, slide decks, and social copy
+- Universities and nonprofits with public-facing content
+- Small agencies that can't afford heavy enterprise accessibility platforms
+- Freelancers serving public-sector, health, or science clients
 
 ## How AccessReady fits alongside Acrobat and Office
 
@@ -31,200 +37,165 @@ Strong accessibility checkers already exist, and AccessReady does **not** try to
 - **Microsoft Word & PowerPoint** have a built-in Accessibility Checker for individual source files.
 - **axe, WAVE, and Lighthouse** are excellent for live HTML pages.
 
-What none of those do is scan a **whole deliverable of mixed formats in one pass** and hand back a single, archivable report. That is AccessReady's lane:
+What none of those do is take a **whole deliverable** of mixed formats in one pass and hand back a **client-ready evidence package**. That's AccessReady's lane:
 
 | | Acrobat / Office checker | Browser a11y tools | **AccessReady** |
 | --- | :---: | :---: | :---: |
 | One file at a time | ✅ | ✅ | ✅ |
 | HTML + Markdown + DOCX + PPTX + PDF in **one run** | — | — | ✅ |
-| **Consolidated** Markdown/JSON evidence report | — | — | ✅ |
+| Plain-English fix per finding | partial | partial | ✅ |
+| **508 Evidence Pack** (methodology, sign-off, remaining risks) | — | — | ✅ |
 | Runs automatically in **CI / GitHub Actions** | — | partial | ✅ |
-| Plain-English fix + WCAG/508 mapping per finding | partial | partial | ✅ |
 
-Use AccessReady as the **preflight and triage layer**: it tells a team what to fix and where, across every file in a project, before the deeper single-file tools do the final remediation and sign-off.
+Use AccessReady as the **deliverable gate**: it tells a team what to fix and where across every file in a project, then documents the work for the client — before the deeper single-file tools do final remediation and sign-off.
 
-Section 508 requires covered federal electronic content to conform to WCAG 2.0 Level A and AA criteria, including many non-web documents. The DOJ Title II web and mobile app rule also raises demand for WCAG 2.1 Level AA workflows across state and local government web content and apps.
+## What it checks
 
-Useful references:
-
-- Section508.gov Applicability & Conformance: https://www.section508.gov/develop/applicability-conformance/
-- Section508.gov Electronic Documents Overview: https://www.section508.gov/test/documents/
-- ADA.gov Title II Web and Mobile App Rule Guide: https://www.ada.gov/resources/small-entity-compliance-guide/
-- WCAG 2.2 Recommendation: https://www.w3.org/TR/WCAG22/
-
-## What AccessReady checks today
-
-AccessReady is intentionally focused on high-frequency preflight issues:
-
-- Missing image alt text
-- Vague link text such as “click here,” “read more,” and raw URLs
-- Missing page/document title
-- Missing document/page language
-- Skipped heading levels
+- Image alt text (HTML, Markdown, DOCX, PPTX)
+- Vague link text ("click here," "read more," raw URLs)
+- Page / document title and language
+- Heading order (skipped levels)
 - Tables without detectable headers
-- HTML images, links, headings, buttons, forms, iframes, videos, and simple contrast checks
-- DOCX/PPTX embedded image description checks using Office XML
-- PDF metadata/tagging preflight checks for `/StructTreeRoot`, `/Lang`, and `/Title`
-- Manual-review flags for reading order, captions/transcripts, complex charts, and exported PDFs
+- HTML buttons, forms, iframes, and `<video>`/`<audio>` captions
+- Simple inline contrast checks
+- DOCX/PPTX embedded image descriptions via Office XML
+- PDF metadata/tagging preflight (`/StructTreeRoot`, `/Lang`, `/Title`)
+- Manual-review flags for reading order, alt-text quality, captions/transcripts, color meaning, and full PDF/UA validation
 
-## What makes it different
+## What it exports
 
-AccessReady is not just a scanner. Each finding includes:
-
-- Severity
-- WCAG mapping
-- Section 508 relevance
-- Location
-- Why it matters
-- How to fix it
-- Example fix when helpful
-- Confidence level
-- Whether a human needs to confirm the result
+| Format | What it's for |
+| --- | --- |
+| `summary` | Quick terminal output for CI |
+| `markdown` | Reviewable per-file report |
+| `json` | Structured data for dashboards / tooling |
+| `csv` | One row per finding with a `status` column — a remediation tracker spreadsheet |
+| `pr-comment` | Sticky pull-request comment (idempotent marker, top findings) |
+| `evidence-pack` | **Client-ready 508 Evidence Pack** — methodology, files reviewed, findings, manual checks, alt-text register, remediation status, remaining risks, delivery recommendation, reviewer sign-off |
 
 ## Preview
 
-The browser app turns an upload into a plain-English report with a severity summary and per-file findings.
-
-**Report overview — hero and severity summary:**
-
 ![AccessReady report overview showing the upload hero and a severity summary grid](docs/screenshots/report-overview.png)
-
-**Per-file findings with plain-English fixes:**
 
 ![AccessReady per-file findings list with severity tags and suggested fixes](docs/screenshots/report-findings.png)
 
-Want to capture your own assets (or a demo GIF)? Open **[`docs/preview.html`](docs/preview.html)** in any browser — it renders the exact report UI (real stylesheet, real sample-scan data) with no build step — or run the real app with `npm run dev` and upload the files in `samples/`. Save new images to `docs/screenshots/`.
-
-## Packages
-
-```text
-accessready/
-├─ apps/web/              Browser-based upload and report UI
-├─ packages/core/         Shared scanner engine
-├─ packages/cli/          Command-line scanner
-├─ .github/workflows/     Example CI workflow
-├─ docs/                  Product, roadmap, checklist, and content guidance
-├─ samples/               Intentionally broken sample content and reports
-└─ templates/             Reusable client/report templates
-```
+The live demo also includes an **interactive sample preflight** (a fake `NIH-webinar-promo-package.zip` with realistic mixed-format issues) and a **508 Evidence Pack** preview you can download.
 
 ## Quick start
 
 ```bash
 npm install
 npm run build
-npm run scan:samples
+npm run scan:samples            # generate a Markdown report
+npm run evidence:samples        # generate a 508 Evidence Pack
+npm run dev                     # start the browser app
 ```
 
-Run the CLI against your own files:
+## CLI usage
 
 ```bash
-npm run accessready -- scan ./content --format markdown --out ./accessready-report.md
-```
-
-Fail CI when high-severity issues are found:
-
-```bash
-npm run accessready -- scan ./dist ./docs --fail-on high
-```
-
-Start the web app:
-
-```bash
-npm run dev
-```
-
-## CLI examples
-
-Scan a folder and print a terminal summary:
-
-```bash
+# Print a terminal summary
 accessready scan ./public
-```
 
-Export JSON:
+# Markdown / JSON / CSV report
+accessready scan ./public --format markdown --out report.md
+accessready scan ./public --format json     --out report.json
+accessready scan ./public --format csv      --out remediation-log.csv
 
-```bash
-accessready scan ./public --format json --out accessready-report.json
-```
+# Client-ready 508 Evidence Pack
+accessready scan ./deliverable --format evidence-pack \
+  --project-name "NIH webinar promo package" \
+  --out AccessReady-evidence-pack.md
 
-Export Markdown:
+# Sticky pull-request comment summary
+accessready scan ./public --format pr-comment --out comment.md
 
-```bash
-accessready scan ./public --format markdown --out accessready-report.md
-```
+# Fail CI on high-severity findings
+accessready scan ./content --fail-on high
 
-Export a CSV remediation log (one row per finding, with a `status` column for tracking):
-
-```bash
-accessready scan ./public --format csv --out accessready-remediation-log.csv
-```
-
-Generate a pull-request comment summary:
-
-```bash
-accessready scan ./public --format pr-comment --out accessready-comment.md
-```
-
-To post that comment automatically on every PR, copy [`.github/workflows/accessready-pr-comment.yml`](.github/workflows/accessready-pr-comment.yml) into your repo. It keeps a single, self-updating AccessReady comment on each pull request.
-
-Ignore generated/vendor folders:
-
-```bash
+# Ignore generated/vendor folders
 accessready scan ./public --ignore "**/vendor/**" --ignore "**/.next/**"
 ```
 
-## GitHub Action example
+## GitHub Action
 
-Copy `.github/workflows/accessready.yml` into your repo and adjust the scan paths.
+Copy [`.github/workflows/accessready.yml`](.github/workflows/accessready.yml) to gate releases, or [`.github/workflows/accessready-pr-comment.yml`](.github/workflows/accessready-pr-comment.yml) to post a self-updating preflight comment on every pull request.
 
 ```yaml
 name: AccessReady 508 Preflight
-
-on:
-  pull_request:
-  push:
-    branches: [main]
-
+on: [pull_request, push]
 jobs:
   accessready:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with: { node-version: 20, cache: npm }
       - run: npm ci
       - run: npm run build
-      - run: npm run accessready -- scan ./public ./docs --format markdown --out accessready-report.md --fail-on high
-      - uses: actions/upload-artifact@v4
+      - run: npm run accessready -- scan ./public ./docs --format evidence-pack --out AccessReady-evidence-pack.md --fail-on high
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
-          name: accessready-report
-          path: accessready-report.md
+          name: accessready-evidence-pack
+          path: AccessReady-evidence-pack.md
 ```
+
+## Sample reports
+
+- [`samples/generated-accessready-report.md`](samples/generated-accessready-report.md) — Markdown report from `npm run scan:samples`
+- [`samples/sample-evidence-pack.md`](samples/sample-evidence-pack.md) — full 508 Evidence Pack from `npm run evidence:samples`
 
 ## Roadmap
 
-- [x] Markdown scanner
-- [x] HTML scanner
-- [x] DOCX/PPTX Office XML preflight
-- [x] PDF metadata/tagging preflight
-- [x] Markdown and JSON reports
-- [x] Browser demo
-- [x] GitHub Action workflow template
-- [x] CSV remediation log export
-- [x] Pull request comments
-- [ ] Better color contrast extraction from CSS files
-- [ ] Image/chart alt text drafting workflow with human approval
-- [ ] Deeper PDF/UA checks through optional external adapters
-- [ ] Google Docs/Drive connector concept
-- [ ] VPAT/ACR evidence packet helper
+**Now**
+- HTML / Markdown scanning
+- DOCX / PPTX preflight checks
+- PDF metadata / tagging checks
+- Markdown / JSON / **CSV** reports
+- **508 Evidence Pack** export
+- Interactive browser demo with status tracking
 
-## Suggested repo description
+**Next**
+- Drag-and-drop folder scanning
+- Better PDF structure analysis
+- Alt text register builder
+- Project-level remediation tracker
+- ~~GitHub Action PR comments~~ ✅ shipped
 
-> Section 508 preflight assistant for communications teams. Scans HTML, Markdown, DOCX, PPTX, and PDFs for common accessibility issues and exports plain-English remediation reports.
+**Future**
+- Browser extension
+- Google Docs / Drive workflow
+- Microsoft Office add-in
+- AI-assisted alt-text drafts with human approval
+- Client portal
+- ACR / VPAT evidence support (not a replacement)
+
+## Grounded in real accessibility workflows
+
+- Supports automated, manual, and hybrid review workflows
+- Helps document methodology and findings — Section508.gov's [Essential Elements of an Accessibility Test Report](https://www.section508.gov/test/elements-of-an-accessibility-test-report/) emphasizes recording method, tools, defects, and replication detail
+- Encourages human review for subjective checks
+- Designed around common 508 / WCAG issue patterns
+- Does **not** replace expert audit, PDF remediation, VPAT / ACR creation, or legal review
+
+### Reference
+
+- [Section508.gov — Testing Overview](https://www.section508.gov/test/testing-overview/)
+- [Section508.gov — Essential Elements of an Accessibility Test Report](https://www.section508.gov/test/elements-of-an-accessibility-test-report/)
+- [Section508.gov — ACR overview](https://www.section508.gov/sell/acr/)
+- [ADA Title II Web Rule overview](https://www.ada.gov/resources/2024-03-08-web-rule/)
+
+## Contributing
+
+Pull requests welcome. Please:
+
+1. `npm install && npm run build && npm test`
+2. Keep the code readable — small files, clear names, no clever metaprogramming
+3. Preserve the positioning: AccessReady is a **preflight + evidence** tool, never a "guaranteed compliance" tool
+
+See [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) for more detail.
 
 ## License
 
-MIT
+MIT — see [LICENSE](LICENSE).

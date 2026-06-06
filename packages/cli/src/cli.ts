@@ -8,6 +8,7 @@ import {
   scanProject,
   severityRank,
   toCsvReport,
+  toEvidencePack,
   toJsonReport,
   toMarkdownReport,
   toPrComment,
@@ -27,7 +28,7 @@ program
   .command("scan")
   .description("Scan files or directories for common accessibility issues")
   .argument("[paths...]", "Files or folders to scan", ["."])
-  .option("-f, --format <format>", "summary, markdown, json, csv, or pr-comment", "summary")
+  .option("-f, --format <format>", "summary, markdown, json, csv, pr-comment, or evidence-pack", "summary")
   .option("-o, --out <file>", "Write report to file")
   .option("--project-name <name>", "Project name for the report", "AccessReady Project")
   .option("--fail-on <severity>", "Fail when this severity or higher is found: critical, high, medium, low, info, none", "none")
@@ -69,7 +70,7 @@ program
 program.parseAsync(process.argv);
 
 interface ScanCommandOptions {
-  format: "summary" | "markdown" | "json" | "csv" | "pr-comment";
+  format: "summary" | "markdown" | "json" | "csv" | "pr-comment" | "evidence-pack";
   out?: string;
   projectName: string;
   failOn: string;
@@ -81,6 +82,7 @@ function renderReport(report: Awaited<ReturnType<typeof scanProject>>, format: s
   if (format === "markdown") return toMarkdownReport(report);
   if (format === "csv") return toCsvReport(report);
   if (format === "pr-comment") return toPrComment(report);
+  if (format === "evidence-pack") return toEvidencePack(report, { deliverableName: report.projectName });
   return toTerminalSummary(report);
 }
 

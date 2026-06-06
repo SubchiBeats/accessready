@@ -8,6 +8,8 @@ import {
   detectFileType,
   toCsvReport,
   toPrComment,
+  toEvidencePack,
+  deliveryRecommendation,
   PR_COMMENT_MARKER
 } from "../dist/index.js";
 
@@ -77,6 +79,38 @@ test("toCsvReport is RFC-4180 safe and has one row per finding", async () => {
   // a field containing a comma must be quoted
   const withComma = '4.1.2 Name, Role, Value';
   if (csv.includes(withComma)) assert.ok(csv.includes(`"${withComma}"`), "comma field quoted");
+});
+
+test("deliveryRecommendation maps severity to delivery decision", async () => {
+  const high = await scanProject([{ fileName: "p.html", content: `<img src="x">` }]);
+  assert.match(deliveryRecommendation(high), /Not ready/i, "high-severity report flagged as not ready");
+
+  const clean = await scanProject([{ fileName: "p.html", content: `<!doctype html><html lang="en"><head><title>OK</title></head><body><h1>x</h1></body></html>` }]);
+  assert.match(deliveryRecommendation(clean), /manual/i, "clean report still requires manual sign-off");
+});
+
+test("toEvidencePack contains the structured sections required for a 508 review report", async () => {
+  const report = await scanProject([
+    { fileName: "webinar-page.html", content: `<img src="speaker.jpg">` }
+  ], { projectName: "NIH-webinar-promo-package" });
+  const pack = toEvidencePack(report, { deliverableName: "NIH-webinar-promo-package.zip", reviewer: "Sahib Singh" });
+
+  for (const heading of [
+    "Executive summary",
+    "Files reviewed",
+    "Automated findings",
+    "Manual review checklist",
+    "Alt text register",
+    "Remediation status",
+    "Remaining risks",
+    "Reviewer sign-off"
+  ]) {
+    assert.ok(pack.includes(heading), `Evidence pack missing section: ${heading}`);
+  }
+  assert.match(pack, /Delivery recommendation:/);
+  assert.match(pack, /Hybrid/i, "documents evaluation method");
+  assert.ok(pack.includes("NIH-webinar-promo-package.zip"), "uses deliverable name");
+  assert.ok(pack.includes("Sahib Singh"), "uses reviewer name");
 });
 
 test("toPrComment has marker, summary table, and verdict", async () => {
