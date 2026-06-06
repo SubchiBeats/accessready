@@ -72,26 +72,26 @@
   </g>
 
   <!-- right-side "needs review" result card accent -->
-  <g transform="translate(905 96)">
-    <rect width="215" height="270" rx="20" fill="#fff" stroke="#dbe5f2"/>
-    <text x="20" y="40" font-size="15" font-weight="800" fill="#172033">inaccessible-</text>
-    <text x="20" y="60" font-size="15" font-weight="800" fill="#172033">sample.html</text>
-    <rect x="20" y="76" width="118" height="26" rx="13" fill="#fff3dc"/>
-    <text x="33" y="94" font-size="12" font-weight="900" fill="#6d4300">NEEDS REVIEW</text>
+  <g transform="translate(905 90)">
+    <rect width="215" height="306" rx="20" fill="#fff" stroke="#dbe5f2"/>
+    <text x="18" y="32" font-size="12.5" font-weight="800" fill="#172033">inaccessible-sample.html</text>
+    <rect x="18" y="44" width="120" height="24" rx="12" fill="#fff3dc"/>
+    <text x="30" y="61" font-size="11" font-weight="900" fill="#6d4300">NEEDS REVIEW</text>
 
-    <g transform="translate(20 124)">
-      <rect width="58" height="22" rx="11" fill="#ffe2e2"/><text x="11" y="16" font-size="10.5" font-weight="900" fill="#7a1010">HIGH</text>
-      <text x="68" y="16" font-size="12.5" font-weight="700" fill="#172033">Button has no</text>
-      <text x="68" y="32" font-size="12.5" font-weight="700" fill="#172033">accessible name</text>
+    <g transform="translate(18 92)">
+      <rect width="56" height="22" rx="11" fill="#ffe2e2"/><text x="12" y="16" font-size="10.5" font-weight="900" fill="#7a1010">HIGH</text>
+      <text x="66" y="11" font-size="12" font-weight="700" fill="#172033">Button has no</text>
+      <text x="66" y="27" font-size="12" font-weight="700" fill="#172033">accessible name</text>
     </g>
-    <g transform="translate(20 178)">
-      <rect width="58" height="22" rx="11" fill="#ffe2e2"/><text x="11" y="16" font-size="10.5" font-weight="900" fill="#7a1010">HIGH</text>
-      <text x="68" y="16" font-size="12.5" font-weight="700" fill="#172033">Form control</text>
-      <text x="68" y="32" font-size="12.5" font-weight="700" fill="#172033">missing a label</text>
+    <g transform="translate(18 156)">
+      <rect width="56" height="22" rx="11" fill="#ffe2e2"/><text x="12" y="16" font-size="10.5" font-weight="900" fill="#7a1010">HIGH</text>
+      <text x="66" y="11" font-size="12" font-weight="700" fill="#172033">Form control</text>
+      <text x="66" y="27" font-size="12" font-weight="700" fill="#172033">missing a label</text>
     </g>
-    <g transform="translate(20 232)">
-      <rect width="74" height="22" rx="11" fill="#fff3dc"/><text x="11" y="16" font-size="10.5" font-weight="900" fill="#6d4300">MEDIUM</text>
-      <text x="20" y="34" font-size="12.5" font-weight="700" fill="#315d9f">+ heading levels skip</text>
+    <g transform="translate(18 220)">
+      <rect width="74" height="22" rx="11" fill="#fff3dc"/><text x="12" y="16" font-size="10.5" font-weight="900" fill="#6d4300">MEDIUM</text>
+      <text x="66" y="16" font-size="12" font-weight="700" fill="#172033">Heading skip</text>
     </g>
+    <text x="18" y="284" font-size="11.5" font-weight="700" fill="#5f6c83">+ 6 more findings</text>
   </g>
 </svg>
