@@ -22,7 +22,7 @@ jobs:
       # and add --fail-on high, e.g.:
       #   npm run accessready -- scan ./public ./docs --fail-on high
       - run: npm run accessready -- scan samples --format markdown --out accessready-report.md --ignore "**/generated-*"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: accessready-report
