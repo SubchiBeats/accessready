@@ -15,6 +15,26 @@ Most accessibility tools are built for developers or for late-stage PDF remediat
 3. Suggest practical fixes.
 4. Generate an evidence report for QA/QC tracking.
 
+## How AccessReady fits alongside Acrobat and Office
+
+Strong accessibility checkers already exist, and AccessReady does **not** try to replace them:
+
+- **Adobe Acrobat Pro** is the right tool for deep PDF/UA tag remediation.
+- **Microsoft Word & PowerPoint** have a built-in Accessibility Checker for individual source files.
+- **axe, WAVE, and Lighthouse** are excellent for live HTML pages.
+
+What none of those do is scan a **whole deliverable of mixed formats in one pass** and hand back a single, archivable report. That is AccessReady's lane:
+
+| | Acrobat / Office checker | Browser a11y tools | **AccessReady** |
+| --- | :---: | :---: | :---: |
+| One file at a time | ✅ | ✅ | ✅ |
+| HTML + Markdown + DOCX + PPTX + PDF in **one run** | — | — | ✅ |
+| **Consolidated** Markdown/JSON evidence report | — | — | ✅ |
+| Runs automatically in **CI / GitHub Actions** | — | partial | ✅ |
+| Plain-English fix + WCAG/508 mapping per finding | partial | partial | ✅ |
+
+Use AccessReady as the **preflight and triage layer**: it tells a team what to fix and where, across every file in a project, before the deeper single-file tools do the final remediation and sign-off.
+
 Section 508 requires covered federal electronic content to conform to WCAG 2.0 Level A and AA criteria, including many non-web documents. The DOJ Title II web and mobile app rule also raises demand for WCAG 2.1 Level AA workflows across state and local government web content and apps.
 
 Useful references:
