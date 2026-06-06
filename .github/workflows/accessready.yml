@@ -9,20 +9,21 @@ jobs:
   accessready:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
           node-version: 20
           cache: npm
       - run: npm ci
       - run: npm run build
+      - run: npm test
       # Demo scan of the bundled (intentionally inaccessible) sample fixtures.
       # It generates a report artifact without failing the build, so this repo's
       # own CI stays green. To GATE your real content, point this at your folders
       # and add --fail-on high, e.g.:
       #   npm run accessready -- scan ./public ./docs --fail-on high
       - run: npm run accessready -- scan samples --format markdown --out accessready-report.md --ignore "**/generated-*"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: accessready-report

@@ -16,6 +16,7 @@
     "accessready": "node packages/cli/dist/cli.js",
     "scan:samples": "npm run accessready -- scan samples --format markdown --out samples/generated-accessready-report.md",
     "typecheck": "npm run typecheck -w @accessready/core && npm run typecheck -w @accessready/cli && npm run typecheck -w @accessready/web",
+    "test": "npm run build -w @accessready/core && node --test packages/core/test/",
     "clean": "rm -rf packages/*/dist apps/web/dist"
   },
   "keywords": [

@@ -2,6 +2,10 @@
 
 ![AccessReady — Section 508 / WCAG preflight assistant](docs/banner.svg)
 
+[![508 Preflight](https://github.com/SubchiBeats/accessready/actions/workflows/accessready.yml/badge.svg)](https://github.com/SubchiBeats/accessready/actions/workflows/accessready.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-informational.svg)](LICENSE)
+[![Node](https://img.shields.io/badge/node-%E2%89%A520-43853d.svg)](https://nodejs.org)
+
 **A Section 508 preflight and remediation assistant for communications teams.**
 
 AccessReady scans common content formats before publication, explains issues in plain English, and produces a clean remediation checklist that teams can review, fix, and archive.
